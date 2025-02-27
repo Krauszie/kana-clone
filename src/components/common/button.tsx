@@ -7,7 +7,7 @@ interface ButtonSubmitProps {
   className?: string;
 }
 
-const ButtonSubmit = ({
+const Button = ({
   children,
   onClick,
   disabled = false,
@@ -27,4 +27,4 @@ const ButtonSubmit = ({
   );
 };
 
-export default ButtonSubmit;
+export default Button;
