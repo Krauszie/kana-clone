@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={jetbrainsMono.className}>
-        <div className="h-screen bg-gray-200 p-10">
+        <div className="min-h-screen bg-gray-200 p-10">
           <main>{children}</main>
         </div>
       </body>

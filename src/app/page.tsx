@@ -1,25 +1,51 @@
-import Hiragana from "@/components/hiragana";
+"use client";
+
+import CheatsheetHiragana from "@/components/hiragana/cheatsheet-hiragana";
+import KanaAnswer from "@/components/kana-answer";
+import CheatsheetKatakana from "@/components/katakana/cheatsheet-katakana";
+import Notes from "@/components/notes";
+import { useState } from "react";
 
 const Home = () => {
+  const [selectedLists, setSelectedLists] = useState({
+    hiraganaVowels: false,
+    hiraganaKagyou: false,
+    hiraganaSagyou: false,
+    katakanaVowels: false,
+    katakanaKagyou: false,
+    katakanaSagyou: false,
+  });
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    setSelectedLists((prev) => ({
+      ...prev,
+      [name]: checked,
+    }));
+  };
+
   return (
     <section className="h-full bg-white -z-[99] rounded-xl shadow-md">
-      <div className="container mx-auto">
-        <div className="flex flex-col gap-2 justify-center p-6">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-800 mb-4">
-              Card Title
-            </h1>
-            <p className="text-gray-600">
-              This is a well-designed card component with a clean layout and
-              good color contrast.
-            </p>
-            <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">
-              Click Me
-            </button>
-          </div>
-
-          <Hiragana />
+      <div className="container mx-auto p-6">
+        <div className="mb-3">
+          <h1 className="text-4xl text-center text-black font-extrabold">
+            DJT KANA CLONE
+          </h1>
         </div>
+        <div>
+          <div className="flex flex-col justify-center gap-y-3">
+            <KanaAnswer selectedLists={selectedLists} />
+            <CheatsheetHiragana
+              selectedLists={selectedLists}
+              handleCheckboxChange={handleCheckboxChange}
+            />
+            <CheatsheetKatakana
+              selectedLists={selectedLists}
+              handleCheckboxChange={handleCheckboxChange}
+            />
+          </div>
+        </div>
+        <Notes />
       </div>
     </section>
   );
