@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaAnglesDown, FaAnglesUp } from "react-icons/fa6";
 import Checkbox from "../common/checkbox";
+import CheatsheetKanaCombiCell from "./cheatsheet-kana-combi-cell";
 
 interface CheatsheetKanaCombiProps {
   type: "hiragana" | "katakana";
@@ -23,8 +24,8 @@ const CheatsheetKanaCombi = ({
   type,
   selectedLists,
   handleCheckboxChange,
-}: // data,
-CheatsheetKanaCombiProps) => {
+  data,
+}: CheatsheetKanaCombiProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -86,18 +87,18 @@ CheatsheetKanaCombiProps) => {
                   key={index}
                   className="border-b border-gray-200 last:border-b-0"
                 >
-                  {/* <td className="p-3 text-black">
-                    <CheatsheetKanaCell kanaData={data.kyagyou[index]} />
+                  <td className="p-3 text-black">
+                    <CheatsheetKanaCombiCell kanaData={data.kyagyou[index]} />
                   </td>
                   <td className="p-3 text-black">
-                    <CheatsheetKanaCell kanaData={data.shagyou[index]} />
+                    <CheatsheetKanaCombiCell kanaData={data.shagyou[index]} />
                   </td>
                   <td className="p-3 text-black">
-                    <CheatsheetKanaCell kanaData={data.chagyou[index]} />
+                    <CheatsheetKanaCombiCell kanaData={data.chagyou[index]} />
                   </td>
                   <td className="p-3 text-black">
-                    <CheatsheetKanaCell kanaData={data.nyagyou[index]} />
-                  </td> */}
+                    <CheatsheetKanaCombiCell kanaData={data.nyagyou[index]} />
+                  </td>
                 </tr>
               ))}
             </tbody>
